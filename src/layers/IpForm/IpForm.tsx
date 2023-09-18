@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { getIpInfo } from "../../utils/getIpInfo";
 import { Descriptions, Input, message, Typography } from "antd";
 import IpData from "./types/types";
@@ -10,9 +10,22 @@ const { Search } = Input;
 const { Title } = Typography;
 
 export const IpForm = () => {
-  const [ip, setIp] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [ipInfo, setIpInfo] = useState(null);
+  const [ip, setIp] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [ipInfo, setIpInfo] = useState<IpData>({
+    is_valid: false,
+    country: "",
+    country_code: "",
+    region_code: "",
+    region: "",
+    city: "",
+    zip: "",
+    lat: 0,
+    lon: 0,
+    timezone: "",
+    isp: "",
+    address: "",
+  });
   const [messageApi, contextHolder] = message.useMessage();
 
   const showErrorMessage = (errorText: string) => {
@@ -48,13 +61,14 @@ export const IpForm = () => {
         onChange={onChangeHandler}
         loading={loading}
       />
-      {ipInfo && (
+      {/*{Object.keys(ipInfo)?.length && (*/}
+      {ipInfo.is_valid && (
         <>
           <Title level={3}>IP: {ipInfo.address}</Title>
           <Descriptions
             contentStyle={{ fontSize: "16px" }}
             labelStyle={{ fontSize: "16px" }}
-            items={makeProps(ipInfo as IpData)}
+            items={makeProps(ipInfo)}
           />
         </>
       )}

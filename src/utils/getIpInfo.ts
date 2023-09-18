@@ -1,8 +1,12 @@
 import axios from "axios";
+import IpData from "../layers/IpForm/types/types";
 
-export const getIpInfo = async (ip, changeStatus) => {
+export const getIpInfo = async (
+  ip: string,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+): Promise<IpData> => {
   try {
-    changeStatus(true);
+    setLoading(true);
     const response = await axios({
       method: "GET",
       url: "https://api.api-ninjas.com/v1/iplookup",
@@ -13,10 +17,11 @@ export const getIpInfo = async (ip, changeStatus) => {
         address: ip,
       },
     });
-    return response.data;
+    return response.data as IpData;
   } catch (err) {
     console.error("error", err);
+    throw err;
   } finally {
-    changeStatus(false);
+    setLoading(false);
   }
 };

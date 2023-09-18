@@ -1,4 +1,6 @@
-const ipData = {
+import IpData from "../layers/IpForm/types/types";
+
+const ipData: IpData = {
   is_valid: true,
   country: "United States",
   country_code: "US",
