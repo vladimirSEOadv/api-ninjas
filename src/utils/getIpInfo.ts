@@ -1,5 +1,5 @@
 import axios from "axios";
-import IpData from "../layers/IpForm/types/types";
+import IpData from "../components/IpForm/types/types";
 
 export const getIpInfo = async (
   ip: string,

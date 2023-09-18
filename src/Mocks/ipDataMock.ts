@@ -1,4 +1,4 @@
-import IpData from "../layers/IpForm/types/types";
+import IpData from "../components/IpForm/types/types";
 
 const ipData: IpData = {
   is_valid: true,

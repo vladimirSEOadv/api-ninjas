@@ -1,5 +1,5 @@
 import "./App.css";
-import { IpForm } from "./layers/IpForm/IpForm";
+import { IpForm } from "./components/IpForm/IpForm";
 
 function App() {
   return (

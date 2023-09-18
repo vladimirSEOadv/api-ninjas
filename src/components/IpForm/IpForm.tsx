@@ -12,20 +12,7 @@ const { Title } = Typography;
 export const IpForm = () => {
   const [ip, setIp] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [ipInfo, setIpInfo] = useState<IpData>({
-    is_valid: false,
-    country: "",
-    country_code: "",
-    region_code: "",
-    region: "",
-    city: "",
-    zip: "",
-    lat: 0,
-    lon: 0,
-    timezone: "",
-    isp: "",
-    address: "",
-  });
+  const [ipInfo, setIpInfo] = useState<IpData | null>(null);
   const [messageApi, contextHolder] = message.useMessage();
 
   const showErrorMessage = (errorText: string) => {
@@ -61,8 +48,7 @@ export const IpForm = () => {
         onChange={onChangeHandler}
         loading={loading}
       />
-      {/*{Object.keys(ipInfo)?.length && (*/}
-      {ipInfo.is_valid && (
+      {ipInfo?.is_valid && (
         <>
           <Title level={3}>IP: {ipInfo.address}</Title>
           <Descriptions
