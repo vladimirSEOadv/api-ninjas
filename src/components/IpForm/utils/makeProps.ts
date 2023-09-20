@@ -2,9 +2,6 @@ import IpData from "../types/types";
 import { DescriptionsProps } from "antd";
 
 export const makeProps = (ipData: IpData): DescriptionsProps["items"] => {
-  console.log("ipData", ipData);
-  console.log("ipData", ipData);
-
   if (!ipData?.is_valid || Object.keys(ipData).length <= 0) {
     return [];
   } else {
